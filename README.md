@@ -18,7 +18,7 @@ pip install -e .
 ## Citing
 If you use `mir_ref`, please cite the following [paper](https://arxiv.org/abs/2312.05994):
 ```
-@proceedings{mir_ref,
+@inproceedings{mir_ref,
     author = {Christos Plachouras and Pablo Alonso-Jim\'enez and Dmitry Bogdanov},
     title = {mir_ref: A Representation Evaluation Framework for Music Information Retrieval Tasks},
     booktitle = {Machine Learning for Audio Workshop, Neural Information Processing Systems (NeurIPS) Conference},
