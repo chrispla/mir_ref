@@ -21,7 +21,7 @@ If you use `mir_ref`, please cite the following [paper](https://arxiv.org/abs/23
 @inproceedings{mir_ref,
     author = {Christos Plachouras and Pablo Alonso-Jim\'enez and Dmitry Bogdanov},
     title = {mir_ref: A Representation Evaluation Framework for Music Information Retrieval Tasks},
-    booktitle = {Machine Learning for Audio Workshop, Neural Information Processing Systems (NeurIPS) Conference},
+    booktitle = {37th Conference on Neural Information Processing Systems (NeurIPS), Machine Learning for Audio Workshop},
     address = {New Orleans, LA, USA},
     year = 2023,
 }
