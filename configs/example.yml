@@ -1,0 +1,76 @@
+experiments:
+  - task:
+      name: autotagging
+      type: multilabel_classification
+      feature_aggregation: mean
+    datasets:
+      - name: magnatagatune
+        type: custom
+        dir: data/magnatagatune/
+        split_type: single
+        deformations:
+          - - type: AddGaussianSNR
+              params:
+                min_snr_in_db: 15
+                max_snr_in_db: 15
+                p: 1
+          - - type: AddGaussianSNR
+              params:
+                min_snr_in_db: 0
+                max_snr_in_db: 0
+                p: 1
+          - - type: Gain
+              params:
+                min_gain_in_db: -12
+                max_gain_in_db: -12
+                p: 1
+    features:
+      - vggish-audioset
+      - clmr-v2
+      - mert-v1-95m-6
+    probes:
+      - type: classifier
+        emb_dim_reduction: False
+        emb_shape: infer
+        hidden_units: []
+        output_activation: sigmoid
+        weight_decay: 1.0e-5
+        # optimizer
+        optimizer: adam
+        learning_rate: 1.0e-3
+        # training
+        # batch_size_val: 1083
+        # batch_size_train: 193
+        batch_size: 1083
+        epochs: 100
+        patience: 10
+        train_sampling: random
+      - type: classifier
+        emb_dim_reduction: False
+        emb_shape: infer
+        hidden_units: [infer]
+        output_activation: sigmoid
+        weight_decay: 1.0e-5
+        # optimizer
+        optimizer: adam
+        learning_rate: 1.0e-3
+        # training
+        batch_size: 1083
+        epochs: 100
+        patience: 10
+        train_sampling: random
+      - type: classifier
+        emb_dim_reduction: False
+        emb_shape: infer
+        hidden_units: [256, 128]
+        output_activation: sigmoid
+        weight_decay: 1.0e-5
+        # optimizer
+        optimizer: adam
+        learning_rate: 1.0e-3
+        # training
+        batch_size: 1083
+        epochs: 100
+        patience: 10
+        train_sampling: random
+      

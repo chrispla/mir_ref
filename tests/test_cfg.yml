@@ -1,0 +1,90 @@
+# Configuration file for tests
+experiments:
+  - task:  # single task per experiment
+      name: instrument_classification
+      type: multiclass_classification
+      feature_aggregation: mean
+    datasets:
+      - name: tinysol
+        type: mirdata
+        dir: tests/data/tinysol/
+        split_type: single
+    deformations:
+      - - type: AddGaussianSNR
+          params:
+            min_snr_db: 15
+            max_snr_db: 15
+            p: 1
+        - type: Gain
+          params:
+            min_gain_db: -12
+            max_gain_db: -12
+            p: 1
+      - - type: Mp3Compression
+          params:
+            min_bitrate: 32
+            max_bitrate: 32
+            p: 1
+    features:
+      - vggish-audioset
+      - effnet-discogs
+      - msd-musicnn
+      - openl3
+      - neuralfp
+    probes:
+      - type: classifier
+        emb_dim_reduction: False
+        emb_shape: infer
+        hidden_units: [infer]
+        output_activation: softmax
+        weight_decay: 1.0e-5
+        # optimizer
+        optimizer: adam
+        learning_rate: 1.0e-2
+        # training
+        batch_size: 16
+        epochs: 2
+        patience: 10
+        train_sampling: random
+      - type: classifier
+        emb_dim_reduction: False
+        emb_shape: infer
+        hidden_units: [infer, infer]
+        output_activation: softmax
+        weight_decay: 1.0e-5
+        # optimizer
+        optimizer: adam
+        learning_rate: 1.0e-2
+        # training
+        batch_size: 16
+        epochs: 2
+        patience: 10
+        train_sampling: random
+      - type: classifier
+        emb_dim_reduction: False
+        emb_shape: infer
+        hidden_units: [64]
+        output_activation: softmax
+        weight_decay: 1.0e-5
+        # optimizer
+        optimizer: adam
+        learning_rate: 1.0e-2
+        # training
+        batch_size: 16
+        epochs: 50
+        patience: 10
+        train_sampling: random
+      - type: classifier
+        emb_dim_reduction: False
+        emb_shape: infer
+        hidden_units: [96, 64]
+        output_activation: softmax
+        weight_decay: 1.0e-5
+        # optimizer
+        optimizer: adam
+        learning_rate: 1.0e-2
+        # training
+        batch_size: 16
+        epochs: 50
+        patience: 10
+        train_sampling: random
