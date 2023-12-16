@@ -1,4 +1,4 @@
-"""Downstream modeks for enmbedding evaluation, as well
+"""Downstream models for feature evaluation, as well
 as helper code to construct and return models.
 """
 
