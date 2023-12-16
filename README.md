@@ -9,7 +9,7 @@ Representation Evaluation Framework for Music Information Retrieval tasks | [Pap
 * Using a config file, you can specify all evaluation experiments you want to run. `mir_ref` will automatically acquire data and conduct the experiments - no coding or data handling needed. Many tasks, datasets, embedding models etc. are ready to use (see supported options section).
 * You can easily integrate your own features (e.g. embedding models), datasets, probes, metrics, and audio deformations and use them in `mir_ref` experiments.
 
-`mir_ref` builds upon existing reproducability efforts in musicaudio, including [`mirdata`](https://mirdata.readthedocs.io/en/stable/) for data handling, [`mir_eval`](https://craffel.github.io/mir_eval/) for evaluation metrics, and [`essentia models`](https://essentia.upf.edu/models.html) for pretrained audio models.
+`mir_ref` builds upon existing reproducability efforts in music audio, including [`mirdata`](https://mirdata.readthedocs.io/en/stable/) for data handling, [`mir_eval`](https://craffel.github.io/mir_eval/) for evaluation metrics, and [`essentia models`](https://essentia.upf.edu/models.html) for pretrained audio models.
 
 ## Disclaimer
 
