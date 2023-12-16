@@ -15,6 +15,9 @@ cd mir_ref
 pip install -e .
 ```
 
+## Example results
+We conducted an example evaluation of 7 models in 6 tasks with 4 deformations and 5 different probing setups. For the full results, please refer to the 'Evaluation' chapter of [this thesis document](https://zenodo.org/records/8380471), pages 39-58.
+
 ## Citing
 If you use `mir_ref`, please cite the following [paper](https://arxiv.org/abs/2312.05994):
 ```
