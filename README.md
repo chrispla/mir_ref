@@ -7,7 +7,7 @@ Representation Evaluation Framework for Music Information Retrieval tasks | [Pap
 `mir_ref` is an open-source library for evaluating audio representations (embeddings or others) on a variety of music-related downstream tasks and datasets. It provides ready-to-use tasks, datasets, deformations, embedding models, and downstream models for config-based, no-code experiment orchestration. Components are modular, so it's easy to add custom embedding models, datasets, metrics, etc. Audio-specific results analysis and visualization tools are also provided.
 
 ## Disclaimer
-Many fixes and documentation improvements are expected soon.
+A first beta release is expected by the end of December, that includes many fixes and documentation improvements.
 
 ## Setup
 
