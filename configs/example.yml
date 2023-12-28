@@ -39,8 +39,6 @@ experiments:
         optimizer: adam
         learning_rate: 1.0e-3
         # training
-        # batch_size_val: 1083
-        # batch_size_train: 193
         batch_size: 1083
         epochs: 100
         patience: 10
