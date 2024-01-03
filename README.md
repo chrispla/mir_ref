@@ -1,6 +1,6 @@
 <img src="docs/img/mir_ref_logo.svg" align="left" height="110">
 
-# mir_ref
+# Experimental adaptations of `mir_ref`
 
 Representation Evaluation Framework for Music Information Retrieval tasks | [Paper](https://arxiv.org/abs/2312.05994)
 
