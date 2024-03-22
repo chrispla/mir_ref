@@ -4,7 +4,7 @@ essentia-tensorflow==2.1b6.dev1110
 librosa
 pyyaml
 scikit-learn
-tensorflow
+tensorflow==2.15
 torch==2.0.1
 torchaudio==2.0.2
 torchvision==0.15.2
