@@ -13,7 +13,7 @@ Representation Evaluation Framework for Music Information Retrieval tasks | [Pap
 
 ## Disclaimer
 
-A first beta release is expected by the end of January, and it includes many fixes and documentation improvements.
+A first beta release is expected by the end of April, and it includes many fixes and documentation improvements.
 
 ## Setup
 
