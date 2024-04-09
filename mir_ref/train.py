@@ -25,6 +25,9 @@ def train(cfg_path, run_id=None):
         cfg_path (str): Path to config file.
         run_id (str, optional): Experiment ID, timestamp if not specified.
     """
+
+    KERAS_VERSION = int(keras.__version__.split(".")[0])
+
     cfg = load_config(cfg_path)
 
     if run_id is None:
@@ -56,7 +59,10 @@ def train(cfg_path, run_id=None):
             if dataset.task_type == "multiclass_classification":
                 try:
                     for metric in metrics:
-                        metric.reset_states()
+                        if KERAS_VERSION == 3:
+                            metric.reset_state()
+                        else:
+                            metric.reset_states()
                 except UnboundLocalError:
                     metrics = [
                         keras.metrics.CategoricalAccuracy(),
@@ -67,7 +73,10 @@ def train(cfg_path, run_id=None):
             elif dataset.task_type == "multilabel_classification":
                 try:
                     for metric in metrics:
-                        metric.reset_states()
+                        if KERAS_VERSION == 3:
+                            metric.reset_state()
+                        else:
+                            metric.reset_states()
                 except UnboundLocalError:
                     metrics = [
                         keras.metrics.Precision(),
@@ -109,6 +118,8 @@ def train_probe(run_id, dataset, model_cfg, model_idx, feature, split_idx, metri
         split_idx (int): Index of the split in the list of splits.
         metrics (list): List of metrics to use for training.
     """
+
+    KERAS_VERSION = int(keras.__version__.split(".")[0])
 
     split = dataset.get_splits()[split_idx]
     n_classes = len(dataset.encoded_labels[dataset.track_ids[0]])
@@ -186,10 +197,15 @@ def train_probe(run_id, dataset, model_cfg, model_idx, feature, split_idx, metri
     with open(Path("./logs") / run_dir / "model_config.yml", "w+") as f:
         yaml.dump(model_cfg, f)
 
+    if KERAS_VERSION == 3:
+        model_extension = "keras"
+    else:
+        model_extension = "h5"
+
     if dataset.task_type == "multiclass_classification":
         checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
             save_weights_only=False,
-            filepath=str(Path("./logs") / run_dir / "weights.h5"),
+            filepath=str(Path("./logs") / run_dir / f"weights.{model_extension}"),
             save_best_only=True,
             monitor="val_categorical_accuracy",
             mode="max",
@@ -235,7 +251,5 @@ def train_probe(run_id, dataset, model_cfg, model_idx, feature, split_idx, metri
         validation_batch_size=1,
         epochs=model_cfg["epochs"],
         callbacks=callbacks,
-        use_multiprocessing=True,
-        workers=4,
         verbose=1,
     )

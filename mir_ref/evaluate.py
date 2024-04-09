@@ -100,6 +100,8 @@ def evaluate_probe(run_id, dataset, model_cfg, model_idx, feature, split_idx):
         split_idx (int): Index of the split in the list of splits.
     """
 
+    KERAS_VERSION = int(keras.__version__.split(".")[0])
+
     split = dataset.get_splits()[split_idx]
     n_classes = len(dataset.encoded_labels[dataset.track_ids[0]])
 
@@ -141,7 +143,11 @@ def evaluate_probe(run_id, dataset, model_cfg, model_idx, feature, split_idx):
 
     # load model
     model = get_model(model_cfg=model_cfg, dim=emb_shape, n_classes=n_classes)
-    model.load_weights(filepath=Path("./logs") / run_dir / "weights.h5")
+    if KERAS_VERSION == 3:
+        model_extension = "keras"
+    else:
+        model_extension = "h5"
+    model.load_weights(filepath=Path("./logs") / run_dir / f"weights.{model_extension}")
 
     # load data
     test_gen = DataGenerator(
